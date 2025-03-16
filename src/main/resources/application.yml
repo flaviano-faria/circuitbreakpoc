@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: circuitbreakpoc
+server:
+  servlet:
+    context-path: /circuitbreakpoc
+    session:
+      timeout: 10s
+  port: '8081'
+resilience4j:
+  circuitbreaker:
+    configs:
+      values:
+        sliding-window-size: 10
+        failure-rate-threshold: 10
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 5
+    instances:
+      offersCircuitBreaker: # Unique name for CircuitBreaker
+        base-config: values
+    timelimiter:
+      configs:
+        values:
+          timeout-duration: 2s
+      instances:
+        offersTimeLimiter: # Unique name for TimeLimiter
+          timeout-duration: 2s
