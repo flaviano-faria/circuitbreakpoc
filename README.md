@@ -44,3 +44,6 @@ This architecture provides:
   Graceful degradation through fallbacks
   Clear separation of concerns
   Resilient external service communication
+
+  Build and run this service to test circuit break:
+  https://github.com/flaviano-faria/spring_redis
